@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.drive.auton;
+package org.firstinspires.ftc.teamcode.drive.auto;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.Disabled;

@@ -1,10 +1,8 @@
-package org.firstinspires.ftc.teamcode.drive.auton;
+package org.firstinspires.ftc.teamcode.drive.auto;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
-import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.CRServo;
 import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.util.ElapsedTime;
 
 @Autonomous (name="autoRedBottom)", group="Auto")
 public class autoRedBottom extends LinearOpMode {
