@@ -56,21 +56,13 @@ public class Controller {
 //        } else {
 //            if (gamepad.a) {
 //                this.planeLaunchMotor.setPower(-1);
-//            }
+//           }
 //        }
-        if (gamepad.y) {
-            this.liftMotor.setPower(0.5);
-        } else {
-            if (gamepad.b) {
-                this.liftMotor.setPower(-0.5);
-            } else {
-                this.liftMotor.setPower(0);
-            }
             if (gamepad.left_bumper) {
-                this.theStick.setPosition(90);
+                this.theStick.setPosition(0);
             } else {
                 if (gamepad.right_bumper) {
-                    this.theStick.setPosition(0);
+                    this.theStick.setPosition(1 );
                 }
                 if (gamepad.dpad_up) {
                     this.liftMotor.setPower(0.5);
@@ -80,11 +72,11 @@ public class Controller {
                     } else {
                         this.liftMotor.setPower(0);
             }
-                    if (gamepad.x) {
-                        this.intakeMotor.setPower(0.1);
+                    if (gamepad.y) {
+                        this.intakeMotor.setPower(0.5);
                     } else {
                         if (gamepad.a) {
-                            this.intakeMotor.setPower(-0.1);
+                            this.intakeMotor.setPower(-0.5);
                         } else {
                             this.intakeMotor.setPower(0);
                     }
@@ -116,9 +108,8 @@ public class Controller {
 //                            this.backLeftMotor.setPower(0);
 //                            this.frontRightMotor.setPower(0);
 //                            this.backRightMotor.setPower(0);
-                        }
-                    }
                 }
             }
         }
     }
+}

@@ -6,8 +6,6 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 
 @Autonomous (name="autoRedTop)", group="Auto")
 public class autoBlueTop extends LinearOpMode {
-        CRServo leftWheel;
-        CRServo rightWheel;
         DcMotor backLeftDrive;
         DcMotor backRightDrive;
         DcMotor frontLeftDrive;
@@ -18,8 +16,6 @@ public class autoBlueTop extends LinearOpMode {
 
         @Override
         public void runOpMode() {
-            leftWheel = hardwareMap.get(CRServo.class, "leftWheel");
-            rightWheel = hardwareMap.get(CRServo.class, "rightWheel");
             backLeftDrive = hardwareMap.get(DcMotor.class, "backLeftDrive");
             backRightDrive = hardwareMap.get(DcMotor.class, "backRightDrive");
             frontLeftDrive = hardwareMap.get(DcMotor.class, "frontLeftDrive");

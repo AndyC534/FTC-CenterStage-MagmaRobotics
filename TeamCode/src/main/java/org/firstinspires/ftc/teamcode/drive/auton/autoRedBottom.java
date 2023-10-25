@@ -1,15 +1,11 @@
 package org.firstinspires.ftc.teamcode.drive.auton;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
-import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
-import com.qualcomm.robotcore.hardware.CRServo;
+import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.util.ElapsedTime;
 
 @Autonomous (name="autoRedBottom)", group="Auto")
 public class autoRedBottom extends LinearOpMode {
-        CRServo leftWheel;
-        CRServo rightWheel;
         DcMotor backLeftDrive;
         DcMotor backRightDrive;
         DcMotor frontLeftDrive;
@@ -20,13 +16,11 @@ public class autoRedBottom extends LinearOpMode {
 
         @Override
         public void runOpMode() {
-            leftWheel = hardwareMap.get(CRServo.class, "leftWheel");
-            rightWheel = hardwareMap.get(CRServo.class, "rightWheel");
             backLeftDrive = hardwareMap.get(DcMotor.class, "backLeftDrive");
             backRightDrive = hardwareMap.get(DcMotor.class, "backRightDrive");
             frontLeftDrive = hardwareMap.get(DcMotor.class, "frontLeftDrive");
             frontRightDrive = hardwareMap.get(DcMotor.class, "frontRightDrive");
-            wrist = hardwareMap.get(DcMotor.class, "wrist");
+//            wrist = hardwareMap.get(DcMotor.class, "wrist");
             leftShoulder = hardwareMap.get(DcMotor.class, "leftShoulder");
             rightShoulder = hardwareMap.get(DcMotor.class, "rightShoulder");
             backLeftDrive.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
@@ -34,7 +28,7 @@ public class autoRedBottom extends LinearOpMode {
 
             leftShoulder.setPower(-1);
             rightShoulder.setPower(-1);
-            wrist.setPower(-1);
+//            wrist.setPower(-1);
 
             frontLeftDrive.setPower(1);
             frontRightDrive.setPower(1);
