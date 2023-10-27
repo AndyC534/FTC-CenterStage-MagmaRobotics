@@ -9,32 +9,33 @@ import com.qualcomm.robotcore.util.Range;
 
 import org.firstinspires.ftc.teamcode.constants;
 
-public class Controller {
-    private DcMotor frontLeftMotor;
-    private DcMotor frontRightMotor;
-    private DcMotor backLeftMotor;
-    private DcMotor backRightMotor;
+public class Controller2 {
+//    private DcMotor frontLeftMotor;
+//    private DcMotor frontRightMotor;
+//    private DcMotor backLeftMotor;
+//    private DcMotor backRightMotor;
     //    private DcMotor planeLaunchMotor;
     private DcMotor liftMotor;
     private DcMotor intakeMotor;
     private Servo theStick;
 
-    public Controller() {
+    public Controller2() {
     }
 
     public void init(HardwareMap hwMap) {
-        this.frontLeftMotor = hwMap.get(DcMotor.class, constants.Button.frontLeftMotor);
-        this.frontRightMotor = hwMap.get(DcMotor.class, constants.Button.frontRightMotor);
-        this.backLeftMotor = hwMap.get(DcMotor.class, constants.Button.backLeftMotor);
-        this.backRightMotor = hwMap.get(DcMotor.class, constants.Button.backRightMotor);
+//        this.frontLeftMotor = hwMap.get(DcMotor.class, constants.Button.frontLeftMotor);
+//        this.frontRightMotor = hwMap.get(DcMotor.class, constants.Button.frontRightMotor);
+//        this.backLeftMotor = hwMap.get(DcMotor.class, constants.Button.backLeftMotor);
+//        this.backRightMotor = hwMap.get(DcMotor.class, constants.Button.backRightMotor);
         this.theStick = hwMap.get(Servo.class,constants.Button.theStick);
 //        this.planeLaunchMotor = hwMap.get(DcMotor.class, constants.Button.planeLaunchMotor);
         this.intakeMotor = hwMap.get(DcMotor.class, constants.Button.intakeMotor);
         this.liftMotor = hwMap.get(DcMotor.class, constants.Button.liftMotor);
-        this.frontLeftMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        this.frontRightMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        this.backLeftMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        this.backRightMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+//        this.frontLeftMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+//        this.frontRightMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+//        this.backLeftMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+//        this.backRightMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        this.liftMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 //        this.planeLaunchMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
     }
 
@@ -42,15 +43,15 @@ public class Controller {
         double leftPower;
         double rightPower;
 
-        double drive = -gamepad.left_stick_y;
-        double turn = gamepad.right_stick_y;
-        leftPower = Range.clip(drive + turn, -1.0, 1.0);
-        rightPower = Range.clip(drive - turn, -1.0, 1.0);
+//        double drive = -gamepad.left_stick_y;
+//        double turn = gamepad.right_stick_y;
+//        leftPower = Range.clip(drive + turn, -1.0, 1.0);
+//        rightPower = Range.clip(drive - turn, -1.0, 1.0);
 
-        this.frontLeftMotor.setPower(leftPower);
-        this.frontRightMotor.setPower(rightPower);
-        this.backLeftMotor.setPower(leftPower);
-        this.backRightMotor.setPower(rightPower);
+//        this.frontLeftMotor.setPower(leftPower);
+//        this.frontRightMotor.setPower(rightPower);
+//        this.backLeftMotor.setPower(leftPower);
+//        this.backRightMotor.setPower(rightPower);
 //        if (gamepad.x) {
 //            this.planeLaunchMotor.setPower(1);
 //        } else {

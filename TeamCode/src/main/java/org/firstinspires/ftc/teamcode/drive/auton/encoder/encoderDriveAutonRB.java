@@ -1,18 +1,16 @@
-package org.firstinspires.ftc.teamcode.drive.auton;
+package org.firstinspires.ftc.teamcode.drive.auton.encoder;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 
 @Autonomous(name="autonRB", group="Autonomous")
 @Disabled
-public class encoderDriveAuton extends LinearOpMode {
+public class encoderDriveAutonRB extends LinearOpMode {
 
-    //declare members.
     private DcMotor frontLeftDrive = null;
     private DcMotor frontRightDrive = null;
     private DcMotor backLeftDrive = null;
@@ -64,9 +62,12 @@ public class encoderDriveAuton extends LinearOpMode {
         waitForStart();
 
         // Note: Reverse movement is obtained by setting a negative distance (not speed)
-        encoderDrive(DRIVE_SPEED, 48, 48, 5.0);  // S1: Forward 47 Inches with 5 Sec timeout
-        encoderDrive(TURN_SPEED, 12, -12, 4.0);  // S2: Turn Right 12 Inches with 4 Sec timeout
-        encoderDrive(DRIVE_SPEED, -24, -24, 4.0);  // S3: Reverse 24 Inches with 4 Sec timeout
+        encoderDrive(DRIVE_SPEED, 23.5, 23.5, 0.5);  // S1: Forward 23.5 inches with 0.5 Sec timeout
+        encoderDrive(DRIVE_SPEED, -23.5, -23.5, 0.5);  // S2: Backward 23.5 inches with 0.5 Sec timeout
+        encoderDrive(TURN_SPEED, 2, -2, 0.5);  // S3: Turn right 2 inches with 0.5 sec timeout
+        encoderDrive(DRIVE_SPEED, 95, 95, 3.0);  // S4: Forward 95 inches with 3 Sec timeout
+        encoderDrive(DRIVE_SPEED, -24, -24, 4.0);  // S5: Reverse 24 Inches with 4 Sec timeout
+        // Parked
 
         telemetry.addData("Path", "Complete");
         telemetry.update();
