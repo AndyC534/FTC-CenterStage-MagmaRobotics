@@ -17,17 +17,20 @@ public class Controller2 {
     //    private DcMotor planeLaunchMotor;
     private DcMotor liftMotor;
     private DcMotor intakeMotor;
+    private DcMotor climbMotor;
+    private Servo climbHookServo;
     private Servo theStick;
 
     public Controller2() {
     }
-
     public void init(HardwareMap hwMap) {
 //        this.frontLeftMotor = hwMap.get(DcMotor.class, constants.Button.frontLeftMotor);
 //        this.frontRightMotor = hwMap.get(DcMotor.class, constants.Button.frontRightMotor);
 //        this.backLeftMotor = hwMap.get(DcMotor.class, constants.Button.backLeftMotor);
 //        this.backRightMotor = hwMap.get(DcMotor.class, constants.Button.backRightMotor);
         this.theStick = hwMap.get(Servo.class,constants.Button.theStick);
+        this.climbMotor = hwMap.get(DcMotor.class,constants.Button.climbMotor);
+        this.climbHookServo = hwMap.get(Servo.class,constants.Button.climbHookServo);
 //        this.planeLaunchMotor = hwMap.get(DcMotor.class, constants.Button.planeLaunchMotor);
         this.intakeMotor = hwMap.get(DcMotor.class, constants.Button.intakeMotor);
         this.liftMotor = hwMap.get(DcMotor.class, constants.Button.liftMotor);
@@ -36,6 +39,7 @@ public class Controller2 {
 //        this.backLeftMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 //        this.backRightMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         this.liftMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        this.climbMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 //        this.planeLaunchMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
     }
 
@@ -59,12 +63,27 @@ public class Controller2 {
 //                this.planeLaunchMotor.setPower(-1);
 //           }
 //        }
+//        if (gamepad.dpad_left) {
+//            this.climbMotor.setPower(1);
+//        } else {
+//            if (gamepad.dpad_right) {
+//                this.climbMotor.setPower(-1);
+//            } else {
+//                this.climbMotor.setPower(0);
+//            }
+//        }
+//        if (gamepad.x) {
+//            this.climbHookServo.setPosition(0);
+//        } else {
+//            this.climbHookServo.setPosition(-0.5);
+//        }
             if (gamepad.left_bumper) {
-                this.theStick.setPosition(0);
+                this.theStick.setPosition(1);
             } else {
                 if (gamepad.right_bumper) {
-                    this.theStick.setPosition(1 );
+                    this.theStick.setPosition(0);
                 }
+            }
                 if (gamepad.dpad_up) {
                     this.liftMotor.setPower(0.5);
                 } else {
@@ -72,15 +91,15 @@ public class Controller2 {
                         this.liftMotor.setPower(-0.5);
                     } else {
                         this.liftMotor.setPower(0);
-            }
+                    }
                     if (gamepad.y) {
-                        this.intakeMotor.setPower(0.5);
+                        this.intakeMotor.setPower(1);
                     } else {
                         if (gamepad.a) {
-                            this.intakeMotor.setPower(-0.5);
+                            this.intakeMotor.setPower(-1);
                         } else {
                             this.intakeMotor.setPower(0);
-                    }
+                        }
 //            if (gamepad.dpad_up) {
 //                this.frontLeftMotor.setPower(1);
 //                this.backLeftMotor.setPower(1);
@@ -109,8 +128,7 @@ public class Controller2 {
 //                            this.backLeftMotor.setPower(0);
 //                            this.frontRightMotor.setPower(0);
 //                            this.backRightMotor.setPower(0);
+                    }
                 }
-            }
-        }
     }
 }

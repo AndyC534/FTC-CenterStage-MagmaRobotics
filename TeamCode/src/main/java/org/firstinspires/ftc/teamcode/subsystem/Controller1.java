@@ -43,10 +43,10 @@ public class Controller1 {
         double leftPower;
         double rightPower;
 
-        double drive = -gamepad.left_stick_y;
-        double turn = gamepad.right_stick_y;
-        leftPower = Range.clip(drive + turn, -1.0, 1.0);
-        rightPower = Range.clip(drive - turn, -1.0, 1.0);
+        double leftDrive = -gamepad.left_stick_y;
+        double rightDrive = gamepad.right_stick_y;
+        leftPower = leftDrive;
+        rightPower = rightDrive;
 
         this.frontLeftMotor.setPower(leftPower);
         this.frontRightMotor.setPower(rightPower);
