@@ -2,16 +2,16 @@ package org.firstinspires.ftc.teamcode.drive;
 
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
-
+import com.qualcomm.robotcore.util.ElapsedTime;
 import org.firstinspires.ftc.teamcode.subsystem.Controller1;
 import org.firstinspires.ftc.teamcode.subsystem.Controller2;
-
 
 @TeleOp(name="Test", group="OpMode")
 public class Tester extends OpMode {
 
     private final Controller1 controller1 = new Controller1();
     private final Controller2 controller2 = new Controller2();
+    private ElapsedTime runtime = new ElapsedTime();
 
 
     @Override
@@ -22,15 +22,18 @@ public class Tester extends OpMode {
     }
 
     @Override
-    public void start(){}
-
-    @Override
-    public void loop(){
-        this.controller1.setControl((gamepad1));
-        this.controller2.setControl((gamepad2));
+    public void start() {
+        this.runtime.reset();
     }
 
     @Override
-    public void stop(){
-}
-}
+    public void loop() {
+        if (this.runtime.seconds() < 120) {
+            this.controller1.setControl((gamepad1));
+            this.controller2.setControl((gamepad2));
+        }
+//        @Override
+//        public void stop() {
+        }
+    }
+//}

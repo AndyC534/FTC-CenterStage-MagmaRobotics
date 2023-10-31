@@ -1,14 +1,14 @@
 package org.firstinspires.ftc.teamcode.drive.auton.encoder;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
-import com.qualcomm.robotcore.eventloop.opmode.Disabled;
+//import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 
-@Autonomous(name="autonBB", group="Autonomous")
-@Disabled
+@Autonomous(name="encoderAutonBB", group="Autonomous")
+//@Disabled
 public class encoderDriveAutonBB extends LinearOpMode {
 
     private DcMotor frontLeftMotor = null;
@@ -31,8 +31,8 @@ public class encoderDriveAutonBB extends LinearOpMode {
 
         frontLeftMotor = hardwareMap.get(DcMotor.class, "frontLeftDrive");
         frontRightMotor = hardwareMap.get(DcMotor.class, "frontRightDrive");
-        backLeftMotor = hardwareMap.get(DcMotor.class, "backLeftDrive");
-        backRightMotor = hardwareMap.get(DcMotor.class, "backRightDrive");
+        backLeftMotor = hardwareMap.get(DcMotor.class, "backLeftMotor");
+        backRightMotor = hardwareMap.get(DcMotor.class, "backRightMotor");
 
         // To drive forward, most robots need the motor on one side to be reversed, because the axles point in opposite directions.
 
