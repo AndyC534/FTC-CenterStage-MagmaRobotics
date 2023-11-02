@@ -1,12 +1,13 @@
-package org.firstinspires.ftc.teamcode.drive.auton;
+package org.firstinspires.ftc.teamcode.drive.auto;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 //import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
-import com.qualcomm.robotcore.hardware.DcMotor;
 //import com.qualcomm.robotcore.hardware.Servo;
-@Autonomous (name="autoBlueTop)", group="Auto")
+import com.qualcomm.robotcore.hardware.DcMotor;
+
+@Autonomous (name="autoRedTop)", group="Auto")
 //@Disabled
-public class autoBlueTop extends LinearOpMode {
+public class autoRedTop extends LinearOpMode {
         DcMotor backLeftMotor;
         DcMotor backRightMotor;
         DcMotor frontLeftMotor;
@@ -34,6 +35,26 @@ public class autoBlueTop extends LinearOpMode {
             backLeftMotor.setPower(1);
             backRightMotor.setPower(1);
 
-            sleep(2800000);
+            sleep(1200);
+
+            frontLeftMotor.setPower(-1);
+            frontRightMotor.setPower(-1);
+            backLeftMotor.setPower(-1);
+            backRightMotor.setPower(-1);
+
+            sleep(1200);
+
+            frontLeftMotor.setPower(1);
+            frontRightMotor.setPower(-1);
+            backLeftMotor.setPower(-1);
+            backRightMotor.setPower(1);
+
+            sleep(2000);
+
+            frontLeftMotor.setPower(0);
+            frontRightMotor.setPower(0);
+            backLeftMotor.setPower(0);
+            backRightMotor.setPower(0);
         }
-}
+
+    }
