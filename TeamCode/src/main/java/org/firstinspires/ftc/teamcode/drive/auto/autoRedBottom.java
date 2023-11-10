@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.drive.auton;
+package org.firstinspires.ftc.teamcode.drive.auto;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 //import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
@@ -12,25 +12,18 @@ public class autoRedBottom extends LinearOpMode {
         DcMotor backRightMotor;
         DcMotor frontLeftMotor;
         DcMotor frontRightMotor;
-//        DcMotor wrist;
-//        DcMotor leftShoulder;
-//        DcMotor rightShoulder;
+
 
         @Override
         public void runOpMode() {
+
             backLeftMotor = hardwareMap.get(DcMotor.class, "backLeftMotor");
             backRightMotor = hardwareMap.get(DcMotor.class, "backRightMotor");
             frontLeftMotor = hardwareMap.get(DcMotor.class, "frontLeftMotor");
             frontRightMotor = hardwareMap.get(DcMotor.class, "frontRightMotor");
-//            wrist = hardwareMap.get(DcMotor.class, "wrist");
-//            leftShoulder = hardwareMap.get(DcMotor.class, "leftShoulder");
-//            rightShoulder = hardwareMap.get(DcMotor.class, "rightShoulder");
             backLeftMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
             backRightMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-
-//            leftShoulder.setPower(-1);
-//            rightShoulder.setPower(-1);
-//            wrist.setPower(-1);
+            waitForStart();
 
             frontLeftMotor.setPower(1);
             frontRightMotor.setPower(1);

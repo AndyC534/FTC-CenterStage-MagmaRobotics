@@ -9,13 +9,14 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import org.firstinspires.ftc.teamcode.constants;
 
-public class Controller1 {
+public class Drive {
     private DcMotor frontLeftMotor;
     private DcMotor frontRightMotor;
     private DcMotor backLeftMotor;
     private DcMotor backRightMotor;
 
-    public Controller1() {
+
+    public Drive() {
     }
 
     public void init(HardwareMap hwMap) {
