@@ -7,7 +7,7 @@
 ////import org.firstinspires.ftc.teamcode.subsystem.Intake;
 ////import org.firstinspires.ftc.teamcode.subsystem.Lift;
 ////import org.firstinspires.ftc.teamcode.subsystem.MecanumDrive;
-////import org.firstinspires.ftc.teamcode.subsystem.theStick;
+////import org.firstinspires.ftc.teamcode.subsystem.clawCRServo;
 //
 //
 //@TeleOp(name="Main Teleop Mode", group="OpMode")
@@ -18,14 +18,14 @@
 //    private MecanumDrive drive = new MecanumDrive();
 ////    private Lift lift = new Lift();
 ////    private Intake intake = new Intake();
-//    private theStick theStick = new theStick();
+//    private clawCRServo clawCRServo = new clawCRServo();
 //
 //    @Override
 //    public void init() {
 //        this.drive.init(hardwareMap);
 ////        this.lift.init(hardwareMap);
 ////        this.intake.init(hardwareMap);
-//        this.theStick.init(hardwareMap);
+//        this.clawCRServo.init(hardwareMap);
 //
 //        telemetry.addData("Status", "Initialized");
 //    }

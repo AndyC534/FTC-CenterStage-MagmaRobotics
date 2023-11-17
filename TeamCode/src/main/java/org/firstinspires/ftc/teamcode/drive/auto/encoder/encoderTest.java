@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.drive.auto;
+package org.firstinspires.ftc.teamcode.drive.auto.encoder;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
@@ -7,8 +7,8 @@ import com.qualcomm.robotcore.hardware.DcMotorSimple;
 //import com.qualcomm.robotcore.hardware.Servo;
 
 
-@Autonomous(name="encoderAutoRB", group="Autonomous")
-public class encoderAutoRB extends LinearOpMode {
+@Autonomous(name="encoderTest", group="Autonomous")
+public class encoderTest extends LinearOpMode {
 
     private DcMotor frontLeftMotor;
     private DcMotor frontRightMotor;
@@ -25,7 +25,6 @@ public class encoderAutoRB extends LinearOpMode {
 
         frontRightMotor = hardwareMap.get(DcMotor.class, "frontRightMotor");
         backRightMotor = hardwareMap.get(DcMotor.class, "backRightMotor");
-
 //        upDown = hardwareMap.get(DcMotor.class, "upDownMotor");
 //        frontBack = hardwareMap.get(DcMotor.class, "frontBackMotor");
 
@@ -44,7 +43,13 @@ public class encoderAutoRB extends LinearOpMode {
 
         waitForStart();
 
-        move(100, 100, 0.5);
+        move(1000, 1000, 0.25); // move forward 1000 ticks at 0.25 speed //
+        move(1000, -1000, 0.25); // turn right 1000 ticks at 0.25 speed //
+        move(500, 1000, 0.25); // move forward 1000 ticks at 0.25 speed //
+        move(1000, -1000, 0.25); // turn right 1000 ticks at 0.25 speed //
+        move(1000, 1000, 0.25); // move forward 1000 ticks at 0.25 speed //
+        move(1000, -1000, 0.25); // turn right 1000 ticks at 0.25 speed //
+        move(500, 1000, 0.24); // move forward 1000 ticks at 0.25 speed //
     }
 
     private void move(int leftTarget, int rightTarget, double speed) {
@@ -70,7 +75,6 @@ public class encoderAutoRB extends LinearOpMode {
             idle();
         }
     }
-
     /**
      * Return true if any motor is still moving.
      */
