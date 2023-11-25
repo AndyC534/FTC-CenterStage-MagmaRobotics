@@ -1,12 +1,12 @@
 package org.firstinspires.ftc.teamcode.drive.auto;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
-//import com.qualcomm.robotcore.eventloop.opmode.Disabled;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 //import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.hardware.DcMotor;
 
 @Autonomous (name="autoRedTop)", group="Auto")
-//@Disabled
+@Disabled
 public class autoRedTop extends LinearOpMode {
         DcMotor backLeftMotor;
         DcMotor backRightMotor;

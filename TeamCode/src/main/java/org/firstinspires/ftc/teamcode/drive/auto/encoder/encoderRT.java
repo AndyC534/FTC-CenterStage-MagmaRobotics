@@ -1,6 +1,7 @@
 package org.firstinspires.ftc.teamcode.drive.auto.encoder;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
@@ -8,6 +9,7 @@ import com.qualcomm.robotcore.hardware.DcMotorSimple;
 
 
 @Autonomous(name="encoderRT", group="Autonomous")
+@Disabled
 public class encoderRT extends LinearOpMode {
 
     private DcMotor frontLeftMotor;

@@ -18,10 +18,10 @@ public class Drive {
     }
 
     public void init(HardwareMap hwMap) {
-        this.frontLeftMotor = hwMap.get(DcMotor.class, constants.Button.frontLeftMotor);
-        this.frontRightMotor = hwMap.get(DcMotor.class, constants.Button.frontRightMotor);
-        this.backLeftMotor = hwMap.get(DcMotor.class, constants.Button.backLeftMotor);
-        this.backRightMotor = hwMap.get(DcMotor.class, constants.Button.backRightMotor);
+        this.frontLeftMotor = hwMap.get(DcMotor.class, constants.Button.FrontLeftDrive);
+        this.frontRightMotor = hwMap.get(DcMotor.class, constants.Button.FrontRightDrive);
+        this.backLeftMotor = hwMap.get(DcMotor.class, constants.Button.BackLeftDrive);
+        this.backRightMotor = hwMap.get(DcMotor.class, constants.Button.BackRightDrive);
         this.frontLeftMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         this.frontRightMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         this.backLeftMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);

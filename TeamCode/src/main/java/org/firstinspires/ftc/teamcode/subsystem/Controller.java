@@ -9,37 +9,37 @@ import com.qualcomm.robotcore.util.Range;
 import org.firstinspires.ftc.teamcode.constants;
 
 public class Controller {
-    private DcMotor frontLeftMotor;
-    private DcMotor frontRightMotor;
-    private DcMotor backLeftMotor;
-    private DcMotor backRightMotor;
-    private DcMotor intakeMotor;
-    private DcMotor upDownMotor;
-    private DcMotor clawMotor;
-    private DcMotor frontBackMotor;
-    private Servo servoTest;
+    private DcMotor FrontLeftDrive;
+    private DcMotor FrontRightDrive;
+    private DcMotor BackLeftDrive;
+    private DcMotor BackRightDrive;
+    private DcMotor Intake;
+    private DcMotor Arm1;
+//    private DcMotor clawMotor;
+    private DcMotor Arm2;
+//    private Servo servoTest;
 
     public Controller() {
     }
 
     public void init(HardwareMap hwMap) {
-        this.frontLeftMotor = hwMap.get(DcMotor.class, constants.Button.frontLeftMotor);
-        this.frontRightMotor = hwMap.get(DcMotor.class, constants.Button.frontRightMotor);
-        this.backLeftMotor = hwMap.get(DcMotor.class, constants.Button.backLeftMotor);
-        this.backRightMotor = hwMap.get(DcMotor.class, constants.Button.backRightMotor);
-        this.intakeMotor = hwMap.get(DcMotor.class, constants.Button.intakeMotor);
-        this.upDownMotor = hwMap.get(DcMotor.class, constants.Button.upDownMotor);
-        this.clawMotor = hwMap.get(DcMotor.class, constants.Button.clawMotor);
-        this.frontBackMotor = hwMap.get(DcMotor.class, constants.Button.frontBackMotor);
-        this.servoTest = hwMap.get(Servo.class, constants.Button.servoTest);
-        this.frontLeftMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        this.frontRightMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        this.backLeftMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        this.backRightMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        this.intakeMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        this.upDownMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        this.clawMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        this.frontBackMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        this.FrontLeftDrive = hwMap.get(DcMotor.class, constants.Button.FrontLeftDrive);
+        this.FrontRightDrive = hwMap.get(DcMotor.class, constants.Button.FrontRightDrive);
+        this.BackLeftDrive = hwMap.get(DcMotor.class, constants.Button.BackLeftDrive);
+        this.BackRightDrive = hwMap.get(DcMotor.class, constants.Button.BackRightDrive);
+        this.Intake = hwMap.get(DcMotor.class, constants.Button.Intake);
+        this.Arm1 = hwMap.get(DcMotor.class, constants.Button.Arm1);
+//        this.clawMotor = hwMap.get(DcMotor.class, constants.Button.clawMotor);
+        this.Arm2 = hwMap.get(DcMotor.class, constants.Button.Arm2);
+//        this.servoTest = hwMap.get(Servo.class, constants.Button.servoTest);
+        this.FrontLeftDrive.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        this.FrontRightDrive.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        this.BackLeftDrive.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        this.BackRightDrive.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        this.Intake.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        this.Arm1.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+//        this.clawMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        this.Arm2.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
     }
 
@@ -52,58 +52,58 @@ public class Controller {
         leftPower = Range.clip(drive + turn, -1.0, 1.0);
         rightPower = Range.clip(drive - turn, -1.0, 1.0);
 
-        this.frontLeftMotor.setPower(leftPower);
-        this.frontRightMotor.setPower(rightPower);
-        this.backLeftMotor.setPower(leftPower);
-        this.backRightMotor.setPower(rightPower);
+        this.FrontLeftDrive.setPower(leftPower);
+        this.FrontRightDrive.setPower(rightPower);
+        this.BackLeftDrive.setPower(leftPower);
+        this.BackRightDrive.setPower(rightPower);
 
-        if (gamepad.left_bumper) {
-            this.clawMotor.setPower(0.05);
-        } else {
-            if (gamepad.right_bumper) {
-                this.clawMotor.setPower(-0.05);
-            } else {
-                this.clawMotor.setPower(0);
-            }
-        }
+//        if (gamepad.left_bumper) {
+//            this.clawMotor.setPower(0.05);
+//        } else {
+//            if (gamepad.right_bumper) {
+//                this.clawMotor.setPower(-0.05);
+//            } else {
+//                this.clawMotor.setPower(0);
+//            }
+//        }
 
         if (gamepad.dpad_up) {
-            this.upDownMotor.setPower(0.5);
+            this.Arm1.setPower(0.5);
         } else {
             if (gamepad.dpad_down) {
-                this.upDownMotor.setPower(-0.5);
+                this.Arm1.setPower(-0.5);
             } else {
-                this.upDownMotor.setPower(0);
+                this.Arm1.setPower(0);
             }
         }
 
         if (gamepad.dpad_left) {
-            this.frontBackMotor.setPower(0.5);
+            this.Arm2.setPower(0.5);
         } else {
             if (gamepad.dpad_right) {
-                this.frontBackMotor.setPower(-0.5);
+                this.Arm2.setPower(-0.5);
             } else {
-                this.frontBackMotor.setPower(0);
+                this.Arm2.setPower(0);
             }
         }
 
         if (gamepad.y) {
-            this.intakeMotor.setPower(1);
+            this.Intake.setPower(1);
         } else {
             if (gamepad.a) {
-                this.intakeMotor.setPower(-1);
+                this.Intake.setPower(-1);
             } else {
-                this.intakeMotor.setPower(0);
+                this.Intake.setPower(0);
             }
         }
 
-        if (gamepad.x) {
-            this.servoTest.setPosition(1);
-        } else {
-            if (gamepad.b); {
-                this.servoTest.setPosition(0);
-            }
-        }
+//        if (gamepad.x) {
+//            this.servoTest.setPosition(1);
+//        } else {
+//            if (gamepad.b); {
+//                this.servoTest.setPosition(0);
+//            }
+//        }
 
 //            if (gamepad.dpad_up) {
 //                this.frontLeftMotor.setPower(1);

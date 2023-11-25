@@ -64,10 +64,11 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 
 @Autonomous(name="encoderTesting", group="Autonomous")
 public class betterTest extends LinearOpMode {
-    private DcMotor frontLeftMotor;
-    private DcMotor frontRightMotor;
+    private DcMotor FrontLeftDrive;
+    private DcMotor FrontRightDrive;
     private DcMotor backLeftMotor;
     private DcMotor backRightMotor;
+    private DcMotor Arm1;
 
     private ElapsedTime     runtime = new ElapsedTime();
 
@@ -89,34 +90,37 @@ public class betterTest extends LinearOpMode {
     public void runOpMode() {
 
         // Initialize the drive system variables.
-        frontLeftMotor = hardwareMap.get(DcMotor.class, "frontLeftMotor");
-        backLeftMotor = hardwareMap.get(DcMotor.class, "backLeftMotor");
+        FrontLeftDrive = hardwareMap.get(DcMotor.class, "FrontLeftDrive");
+        backLeftMotor = hardwareMap.get(DcMotor.class, "BackLeftDrive");
 
-        frontRightMotor = hardwareMap.get(DcMotor.class, "frontRightMotor");
-        backRightMotor = hardwareMap.get(DcMotor.class, "backRightMotor");
+        FrontRightDrive = hardwareMap.get(DcMotor.class, "FrontRightDrive");
+        backRightMotor = hardwareMap.get(DcMotor.class, "BackRightDrive");
 
         // To drive forward, most robots need the motor on one side to be reversed, because the axles point in opposite directions.
         // When run, this OpMode should start both motors driving forward. So adjust these two lines based on your first test drive.
         // Note: The settings here assume direct drive on left and right wheels.  Gear Reduction or 90 Deg drives may require direction flips
-        frontLeftMotor.setDirection(DcMotor.Direction.REVERSE);
-        frontRightMotor.setDirection(DcMotor.Direction.FORWARD);
+        FrontLeftDrive.setDirection(DcMotor.Direction.REVERSE);
+        FrontRightDrive.setDirection(DcMotor.Direction.FORWARD);
 
         backLeftMotor.setDirection(DcMotor.Direction.REVERSE);
         backRightMotor.setDirection(DcMotor.Direction.FORWARD);
 
-        frontLeftMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        frontRightMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        FrontLeftDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        FrontRightDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
 
         backLeftMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         backRightMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
 
-        frontLeftMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        frontRightMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        FrontLeftDrive.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        FrontRightDrive.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+
+        backLeftMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        backRightMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 
         // Send telemetry message to indicate successful Encoder reset
         telemetry.addData("Starting at",  "%7d :%7d",
-                          frontLeftMotor.getCurrentPosition(),
-                          frontRightMotor.getCurrentPosition());
+                          FrontLeftDrive.getCurrentPosition(),
+                          FrontRightDrive.getCurrentPosition());
         telemetry.update();
 
         // Wait for the game to start (driver presses PLAY)
@@ -125,9 +129,9 @@ public class betterTest extends LinearOpMode {
         // Step through each leg of the path,
         // Note: Reverse movement is obtained by setting a negative distance (not speed)
         /** first value is speed, then inches, then timeout **/
-        encoderDrive(DRIVE_SPEED,  48,  48, 5.0);  // S1: Forward 47 Inches with 5 Sec timeout
-        encoderDrive(TURN_SPEED,   12, -12, 4.0);  // S2: Turn Right 12 Inches with 4 Sec timeout
-        encoderDrive(DRIVE_SPEED, -24, -24, 4.0);  // S3: Reverse 24 Inches with 4 Sec timeout
+        encoderDrive(DRIVE_SPEED,  48, 48, 1, 1, 5.0);  // S1: Forward 47 Inches with 5 Sec timeout
+        encoderDrive(TURN_SPEED,   12, -12, -1, -1, 4.0);  // S2: Turn Right 12 Inches with 4 Sec timeout
+        encoderDrive(DRIVE_SPEED, -24, -24, 1, -1, 4.0);  // S3: Reverse 24 Inches with 4 Sec timeout
 
         telemetry.addData("Path", "Complete");
         telemetry.update();
@@ -144,7 +148,10 @@ public class betterTest extends LinearOpMode {
      *  3) Driver stops the OpMode running.
      */
     public void encoderDrive(double speed,
-                             double leftInches, double rightInches,
+                             double leftInches,
+                             double rightInches,
+                             double backLeft,
+                             double backRight,
                              double timeoutS) {
         int newLeftTarget;
         int newRightTarget;
@@ -153,21 +160,21 @@ public class betterTest extends LinearOpMode {
         if (opModeIsActive()) {
 
             // Determine new target position, and pass to motor controller
-            newLeftTarget = frontLeftMotor.getCurrentPosition() + (int)(leftInches * COUNTS_PER_INCH);
-            newRightTarget = frontRightMotor.getCurrentPosition() + (int)(rightInches * COUNTS_PER_INCH);
-            frontLeftMotor.setTargetPosition(newLeftTarget);
-            frontRightMotor.setTargetPosition(newRightTarget);
+            newLeftTarget = FrontLeftDrive.getCurrentPosition() + (int)(leftInches * COUNTS_PER_INCH);
+            newRightTarget = FrontRightDrive.getCurrentPosition() + (int)(rightInches * COUNTS_PER_INCH);
+            FrontLeftDrive.setTargetPosition(newLeftTarget);
+            FrontRightDrive.setTargetPosition(newRightTarget);
 
             // Turn On RUN_TO_POSITION
-            frontLeftMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-            frontRightMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+            FrontLeftDrive.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+            FrontRightDrive.setMode(DcMotor.RunMode.RUN_TO_POSITION);
 
             // reset the timeout time and start motion.
             runtime.reset();
-            frontLeftMotor.setPower(Math.abs(speed));
-            frontRightMotor.setPower(Math.abs(speed));
-            backLeftMotor.setPower(Math.abs(speed));
-            backRightMotor.setPower(Math.abs(speed));
+            FrontLeftDrive.setPower(Math.abs(speed));
+            FrontRightDrive.setPower(Math.abs(speed));
+            backLeftMotor.setPower(backLeft);
+            backRightMotor.setPower(backRight);
             // keep looping while we are still active, and there is time left, and both motors are running.
             // Note: We use (isBusy() && isBusy()) in the loop test, which means that when EITHER motor hits
             // its target position, the motion will stop.  This is "safer" in the event that the robot will
@@ -176,22 +183,22 @@ public class betterTest extends LinearOpMode {
             // onto the next step, use (isBusy() || isBusy()) in the loop test.
             while (opModeIsActive() &&
                    (runtime.seconds() < timeoutS) &&
-                   (frontLeftMotor.isBusy() && frontRightMotor.isBusy())) {
+                   (FrontLeftDrive.isBusy() && FrontRightDrive.isBusy())) {
 
                 // Display it for the driver.
                 telemetry.addData("Running to",  " %7d :%7d", newLeftTarget,  newRightTarget);
                 telemetry.addData("Currently at",  " at %7d :%7d",
-                                            frontLeftMotor.getCurrentPosition(), frontRightMotor.getCurrentPosition());
+                                            FrontLeftDrive.getCurrentPosition(), FrontRightDrive.getCurrentPosition());
                 telemetry.update();
             }
 
             // Stop all motion;
-            frontLeftMotor.setPower(0);
-            frontRightMotor.setPower(0);
+            FrontLeftDrive.setPower(0);
+            FrontRightDrive.setPower(0);
 
             // Turn off RUN_TO_POSITION
-            frontLeftMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-            frontRightMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+            FrontLeftDrive.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+            FrontRightDrive.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
             sleep(250);   // optional pause after each move.
         }
