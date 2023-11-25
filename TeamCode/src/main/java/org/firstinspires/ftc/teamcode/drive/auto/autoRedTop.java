@@ -30,31 +30,42 @@ public class autoRedTop extends LinearOpMode {
 //            leftShoulder.setPower(-1);
 //            rightShoulder.setPower(-1);
 
+
             frontLeftMotor.setPower(1);
-            frontRightMotor.setPower(1);
-            backLeftMotor.setPower(1);
-            backRightMotor.setPower(1);
-
-            sleep(1200);
-
-            frontLeftMotor.setPower(-1);
             frontRightMotor.setPower(-1);
-            backLeftMotor.setPower(-1);
+            backLeftMotor.setPower(1);
             backRightMotor.setPower(-1);
 
-            sleep(1200);
-
-            frontLeftMotor.setPower(1);
-            frontRightMotor.setPower(-1);
-            backLeftMotor.setPower(-1);
-            backRightMotor.setPower(1);
-
-            sleep(2000);
+            sleep(2500);
 
             frontLeftMotor.setPower(0);
             frontRightMotor.setPower(0);
             backLeftMotor.setPower(0);
             backRightMotor.setPower(0);
+
+            sleep(90000000);
+
+//            sleep(1200);
+//
+//            frontLeftMotor.setPower(-1);
+//            frontRightMotor.setPower(-1);
+//            backLeftMotor.setPower(-1);
+//            backRightMotor.setPower(-1);
+//
+//            sleep(1200);
+//
+//            frontLeftMotor.setPower(1);
+//            frontRightMotor.setPower(-1);
+//            backLeftMotor.setPower(-1);
+//            backRightMotor.setPower(1);
+//
+//            sleep(2000);
+//
+//            frontLeftMotor.setPower(0);
+//            frontRightMotor.setPower(0);
+//            backLeftMotor.setPower(0);
+//            backRightMotor.setPower(0);
+//            return false;
         }
 
     }

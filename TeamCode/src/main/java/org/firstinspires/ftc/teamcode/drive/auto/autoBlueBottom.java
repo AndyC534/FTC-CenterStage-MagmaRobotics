@@ -22,21 +22,24 @@ public class autoBlueBottom extends LinearOpMode {
         backRightMotor = hardwareMap.get(DcMotor.class, "backRightMotor");
         frontLeftMotor = hardwareMap.get(DcMotor.class, "frontLeftMotor");
         frontRightMotor = hardwareMap.get(DcMotor.class, "frontRightMotor");
-//        wrist = hardwareMap.get(DcMotor.class, "wrist");
-//        leftShoulder = hardwareMap.get(DcMotor.class, "leftShoulder");
-//        rightShoulder = hardwareMap.get(DcMotor.class, "rightShoulder");
+
         backLeftMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         backRightMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-//        leftShoulder.setPower(-1);
-//        rightShoulder.setPower(-1);
-//        wrist.setPower(-1);
 
-        frontLeftMotor.setPower(1);
-        frontRightMotor.setPower(1);
+        frontLeftMotor.setPower(-1);
+        frontRightMotor.setPower(-1);
         backLeftMotor.setPower(1);
         backRightMotor.setPower(1);
+        /** strafing attempt **/
 
-        sleep(2800000);
+        sleep(2500);
+
+        frontLeftMotor.setPower(0);
+        frontRightMotor.setPower(0);
+        backLeftMotor.setPower(0);
+        backRightMotor.setPower(0);
+
+        sleep(90000000);
 
 //        frontLeftMotor.setPower(-1);
 //        frontRightMotor.setPower(-1);
@@ -59,5 +62,6 @@ public class autoBlueBottom extends LinearOpMode {
 //
 //            // ^ This is the code for parking //
 
+//        return false;
     }
 }
