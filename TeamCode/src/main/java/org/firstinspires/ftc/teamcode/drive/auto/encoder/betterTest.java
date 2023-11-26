@@ -31,6 +31,7 @@ package org.firstinspires.ftc.teamcode.drive.auto.encoder;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 //import com.qualcomm.robotcore.eventloop.opmode.Disabled;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 //import com.qualcomm.robotcore.hardware.DcMotorSimple;
@@ -63,6 +64,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
  */
 
 @Autonomous(name="encoderTesting", group="Autonomous")
+@Disabled
 public class betterTest extends LinearOpMode {
     private DcMotor FrontLeftDrive;
     private DcMotor FrontRightDrive;

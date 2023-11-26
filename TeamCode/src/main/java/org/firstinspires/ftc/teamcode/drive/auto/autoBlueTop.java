@@ -4,23 +4,23 @@ import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 //import com.qualcomm.robotcore.hardware.Servo;
-@Autonomous (name="autoBlueTop)", group="Auto")
-@Disabled
+@Autonomous (name="backupAuto", group="Autonomous")
+//@Disabled
 public class autoBlueTop extends LinearOpMode {
-    DcMotor backLeftMotor;
-    DcMotor backRightMotor;
-    DcMotor frontLeftMotor;
-    DcMotor frontRightMotor;
+    DcMotor BackLeftDrive;
+    DcMotor BackRightDrive;
+    DcMotor FrontLeftDrive;
+    DcMotor FrontRightDrive;
 //        DcMotor wrist;
 //        DcMotor leftShoulder;
 //        DcMotor rightShoulder;
 
     @Override
     public void runOpMode() {
-        backLeftMotor = hardwareMap.get(DcMotor.class, "backLeftMotor");
-        backRightMotor = hardwareMap.get(DcMotor.class, "backRightMotor");
-        frontLeftMotor = hardwareMap.get(DcMotor.class, "frontLeftMotor");
-        frontRightMotor = hardwareMap.get(DcMotor.class, "frontRightMotor");
+        BackLeftDrive = hardwareMap.get(DcMotor.class, "BackLeftDrive");
+        BackRightDrive = hardwareMap.get(DcMotor.class, "BackRightDrive");
+        FrontLeftDrive = hardwareMap.get(DcMotor.class, "FrontLeftDrive");
+        FrontRightDrive = hardwareMap.get(DcMotor.class, "FrontRightDrive");
 //            wrist = hardwareMap.get(DcMotor.class, "wrist");
 //            leftShoulder = hardwareMap.get(DcMotor.class, "leftShoulder");
 //            rightShoulder = hardwareMap.get(DcMotor.class, "rightShoulder");
@@ -30,17 +30,17 @@ public class autoBlueTop extends LinearOpMode {
 //            rightShoulder.setPower(-1);
 
 
-        frontLeftMotor.setPower(1);
-        frontRightMotor.setPower(-1);
-        backLeftMotor.setPower(1);
-        backRightMotor.setPower(-1);
+        FrontLeftDrive.setPower(1);
+        FrontRightDrive.setPower(-1);
+        BackLeftDrive.setPower(1);
+        BackRightDrive.setPower(-1);
 
         sleep(2500);
 
-        frontLeftMotor.setPower(0);
-        frontRightMotor.setPower(0);
-        backLeftMotor.setPower(0);
-        backRightMotor.setPower(0);
+        FrontLeftDrive.setPower(0);
+        FrontRightDrive.setPower(0);
+        BackLeftDrive.setPower(0);
+        BackRightDrive.setPower(0);
 
         sleep(90000000);
     }
